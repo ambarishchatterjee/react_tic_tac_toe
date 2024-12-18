@@ -1,22 +1,15 @@
-import React from 'react'
+export default function Gameboard({ onSelect, board }) {
 
-const initialGameBoard = [
-    [null, null, null],
-    [null, null, null],
-    [null, null, null]
-]
-
-export default function Gameboard() {
     return (
         <ol id='game-board'>
-            {initialGameBoard.map((row, rowIndex) => {
+            {board.map((row, rowIndex) => {
                 return (
                     <li key={rowIndex}>
                         <ol>
                             {row.map((playerSymbol, colIndex) => {
                                 return (
                                     <li key={colIndex}>
-                                        <button>{playerSymbol}</button>
+                                        <button onClick={() => onSelect(rowIndex, colIndex)} disabled={playerSymbol != null}>{playerSymbol}</button>
                                     </li>
                                 )
 
